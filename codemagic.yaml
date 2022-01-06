@@ -22,10 +22,6 @@ workflows:
           - name: Set up keystore
             script: |
               echo $FCI_KEYSTORE | base64 --decode > /tmp/keystore.keystore            
-          - name: Set build number and export Unity
-            script: |
-              export NEW_BUILD_NUMBER=$(($(google-play get-latest-build-number --package-name "$PACKAGE_NAME" --tracks=alpha) + 1))
-              python3 export_unity.py android        
       artifacts:
           - android/*.aab
    
